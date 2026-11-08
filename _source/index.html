@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>William Recchia · Sushi Chef</title>
+<meta name="description" content="William Recchia, Sushi Chef com 16 anos de experiência em culinária japonesa. Eventos, casamentos, aniversários e experiências Omakase privativas.">
+<meta name="theme-color" content="#0a0908">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a0908'/%3E%3Ccircle cx='32' cy='32' r='22' fill='none' stroke='%23c9a35c' stroke-width='3' stroke-dasharray='118 20'/%3E%3Ctext x='32' y='41' text-anchor='middle' font-family='serif' font-size='24' fill='%23e6cb8e'%3EW%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&family=Noto+Serif+JP:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#0a0908;
+  --bg-2:#100e0c;
+  --card:#15130f;
+  --line:rgba(201,163,92,.2);
+  --line-strong:rgba(201,163,92,.45);
+  --gold:#c9a35c;
+  --gold-light:#e8cf93;
+  --gold-dark:#8f6d33;
+  --text:#ece5d8;
+  --muted:#a29a8b;
+  --display:'Cinzel', 'Times New Roman', serif;
+  --serif:'Cormorant Garamond', Georgia, serif;
+  --sans:'Jost', 'Helvetica Neue', Arial, sans-serif;
+  --jp:'Noto Serif JP', 'Hiragino Mincho ProN', serif;
+  --gold-grad:linear-gradient(100deg,#8f6d33 0%,#e8cf93 32%,#c9a35c 55%,#f3e2b3 78%,#a8843f 100%);
+  --ease:cubic-bezier(.2,.7,.2,1);
+  --wrap:1180px;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--sans);
+  font-weight:300;
+  font-size:17px;
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+body.locked{overflow:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer;background:none;border:0}
+::selection{background:var(--gold);color:var(--bg)}
+
+.wrap{width:min(var(--wrap),100% - 48px);margin-inline:auto}
+.gold-text{background:var(--gold-grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.jp{font-family:var(--jp)}
+
+.eyebrow{
+  display:inline-flex;align-items:center;gap:14px;
+  font-size:12px;font-weight:500;letter-spacing:.38em;text-transform:uppercase;color:var(--gold);
+}
+.eyebrow::before{content:"";width:34px;height:1px;background:var(--gold)}
+.eyebrow .jp{letter-spacing:.2em;color:var(--muted);font-weight:400}
+
+.h2{
+  font-family:var(--serif);font-weight:500;
+  font-size:clamp(36px,5vw,58px);line-height:1.08;letter-spacing:-.005em;
+  margin:18px 0 18px;
+}
+.h2 em{font-style:italic;color:var(--gold-light)}
+.lead{color:var(--muted);max-width:560px}
+
+.section{padding:clamp(90px,12vw,150px) 0;position:relative}
+.section-head{text-align:center;margin-bottom:clamp(44px,6vw,70px)}
+.section-head .eyebrow::after{content:"";width:34px;height:1px;background:var(--gold)}
+.section-head .lead{margin-inline:auto}
+
+.btn{
+  position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  padding:16px 30px;border:1px solid var(--gold);
+  font-size:12px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--bg);background:var(--gold-grad);background-size:200% 100%;background-position:0 0;
+  transition:background-position .6s var(--ease),transform .3s var(--ease),box-shadow .3s;
+}
+.btn:hover{background-position:100% 0;transform:translateY(-2px);box-shadow:0 12px 30px -12px rgba(201,163,92,.6)}
+.btn.ghost{background:transparent;color:var(--gold-light)}
+.btn.ghost:hover{background:rgba(201,163,92,.08);box-shadow:none}
+.btn svg{width:16px;height:16px}
+
+/* ---------- Selo ---------- */
+.seal{display:block}
+
+/* ---------- Navegação ---------- */
+.nav{
+  position:fixed;inset:0 0 auto 0;z-index:50;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:22px clamp(20px,4vw,48px);
+  transition:background .4s,padding .4s,border-color .4s;
+  border-bottom:1px solid transparent;
+}
+.nav.scrolled{
+  background:rgba(10,9,8,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  padding-block:14px;border-color:var(--line);
+}
+.nav-brand{display:flex;align-items:center;gap:12px}
+.nav-brand .seal{width:38px;height:38px}
+.nav-brand span{font-family:var(--display);font-size:15px;letter-spacing:.22em;text-transform:uppercase}
+.nav-links{display:flex;align-items:center;gap:34px}
+.nav-links a{
+  font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);
+  position:relative;transition:color .3s;
+}
+.nav-links a::after{
+  content:"";position:absolute;left:0;right:0;bottom:-6px;height:1px;background:var(--gold);
+  transform:scaleX(0);transition:transform .4s var(--ease);
+}
+.nav-links a:hover,.nav-links a.active{color:var(--text)}
+.nav-links a.active::after,.nav-links a:hover::after{transform:scaleX(1)}
+.nav-links .nav-cta{color:var(--gold-light);border:1px solid var(--line-strong);padding:10px 18px}
+.nav-links .nav-cta::after{display:none}
+.nav-links .nav-cta:hover{border-color:var(--gold);background:rgba(201,163,92,.08)}
+.nav-toggle{display:none;width:42px;height:42px;position:relative;z-index:2}
+.nav-toggle span{position:absolute;left:10px;right:10px;height:1px;background:var(--gold-light);transition:transform .35s var(--ease),top .35s}
+.nav-toggle span:first-child{top:16px}
+.nav-toggle span:last-child{top:25px}
+.nav.open .nav-toggle span:first-child{top:20px;transform:rotate(45deg)}
+.nav.open .nav-toggle span:last-child{top:20px;transform:rotate(-45deg)}
+
+/* ---------- Hero ---------- */
+.hero{
+  position:relative;min-height:100vh;min-height:100svh;
+  display:flex;align-items:center;overflow:hidden;isolation:isolate;
+}
+.hero-media{
+  position:absolute;top:0;bottom:0;left:30%;right:0;z-index:-2;
+  background-size:cover;background-position:center;
+  transform:scale(1.08);opacity:0;
+  transition:transform 2.4s var(--ease),opacity 1.6s var(--ease);
+}
+.loaded .hero-media{transform:scale(1);opacity:1}
+.hero-shade{
+  position:absolute;inset:0;z-index:-1;
+  background:
+    linear-gradient(90deg,var(--bg) 30%,rgba(10,9,8,.75) 44%,rgba(10,9,8,.1) 66%,transparent 80%),
+    linear-gradient(0deg,var(--bg) 0%,transparent 22%),
+    linear-gradient(180deg,rgba(10,9,8,.7) 0%,transparent 18%);
+}
+.hero-content{
+  width:min(560px,100%);margin-left:clamp(24px,7vw,120px);
+  text-align:center;padding:120px 0 90px;
+}
+.hero-content > *{opacity:0;transform:translateY(18px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.loaded .hero-content > *{opacity:1;transform:none}
+.loaded .hero-content > *:nth-child(2){transition-delay:.15s}
+.loaded .hero-content > *:nth-child(3){transition-delay:.3s}
+.loaded .hero-content > *:nth-child(4){transition-delay:.45s}
+.loaded .hero-content > *:nth-child(5){transition-delay:.6s}
+.loaded .hero-content > *:nth-child(6){transition-delay:.75s}
+.loaded .hero-content > *:nth-child(7){transition-delay:.9s}
+.hero .seal{width:clamp(96px,11vw,128px);height:auto;margin:0 auto 26px}
+.hero-title{
+  font-family:var(--display);font-weight:500;
+  font-size:clamp(40px,6.2vw,74px);line-height:1.02;letter-spacing:.08em;text-transform:uppercase;
+}
+.rule{
+  display:flex;align-items:center;justify-content:center;gap:18px;margin:22px 0 14px;
+  font-family:var(--display);font-size:clamp(13px,1.5vw,16px);letter-spacing:.34em;text-transform:uppercase;color:var(--text);
+}
+.rule::before,.rule::after{content:"";height:1px;width:clamp(30px,6vw,70px);background:linear-gradient(90deg,transparent,var(--gold))}
+.rule::after{transform:scaleX(-1)}
+.hero-tags{font-size:12px;letter-spacing:.34em;text-transform:uppercase;color:var(--muted)}
+.hero-tags b{color:var(--gold);font-weight:400;margin:0 8px}
+.hero-script{font-family:var(--serif);font-style:italic;font-size:clamp(22px,2.4vw,28px);color:var(--gold-light);margin:26px 0 34px}
+.hero-cta{display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
+.hero-vertical{
+  position:absolute;right:clamp(18px,3vw,44px);top:50%;transform:translateY(-50%);
+  writing-mode:vertical-rl;font-family:var(--jp);font-size:14px;letter-spacing:.9em;color:rgba(232,207,147,.55);
+}
+.scroll-cue{
+  position:absolute;left:50%;bottom:28px;transform:translateX(-50%);
+  width:1px;height:56px;background:linear-gradient(var(--gold),transparent);overflow:hidden;
+}
+.scroll-cue span{position:absolute;inset:0;background:var(--gold-light);animation:cue 2.2s var(--ease) infinite}
+@keyframes cue{0%{transform:translateY(-100%)}60%,100%{transform:translateY(100%)}}
+
+/* ---------- Pilares ---------- */
+.pillars{border-block:1px solid var(--line);background:var(--bg-2)}
+.pillars .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+.pillar{display:flex;align-items:center;justify-content:center;gap:16px;padding:30px 12px;position:relative}
+.pillar + .pillar::before{content:"";position:absolute;left:0;top:30%;bottom:30%;width:1px;background:var(--line)}
+.pillar .jp{font-size:28px;line-height:1}
+.pillar span{font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
+
+/* ---------- O Chef ---------- */
+.about{display:grid;grid-template-columns:5fr 6fr;gap:clamp(40px,7vw,100px);align-items:center}
+.about-photo{position:relative;max-width:470px;justify-self:center;width:100%}
+.about-photo::before{
+  content:"";position:absolute;inset:22px -22px -22px 22px;border:1px solid var(--line-strong);z-index:-1;
+}
+.about-photo img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 20%;filter:saturate(.92) contrast(1.04)}
+.about-badge{
+  position:absolute;left:-26px;bottom:38px;
+  background:var(--bg);border:1px solid var(--line-strong);padding:18px 22px;text-align:center;
+}
+.about-badge strong{display:block;font-family:var(--display);font-size:44px;line-height:1;font-weight:500}
+.about-badge small{font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--muted)}
+.about-text p{color:var(--muted);margin-bottom:16px;max-width:560px}
+.about-text p strong{color:var(--text);font-weight:400}
+.quote{
+  font-family:var(--serif);font-style:italic;font-size:clamp(23px,2.4vw,29px);line-height:1.35;color:var(--text);
+  border-left:1px solid var(--gold);padding:4px 0 4px 24px;margin:30px 0 36px;max-width:520px;
+}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);padding-top:26px;max-width:560px}
+.stat strong{display:block;font-family:var(--display);font-weight:500;font-size:clamp(28px,3vw,36px);line-height:1.1}
+.stat span{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+
+/* ---------- Serviços ---------- */
+.services{background:var(--bg-2)}
+.service-cards{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.service-card{
+  position:relative;overflow:hidden;min-height:440px;text-align:left;
+  display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(26px,3.4vw,44px);
+  border:1px solid var(--line);isolation:isolate;
+  transition:border-color .5s,transform .5s var(--ease);
+}
+.service-card .bg{position:absolute;inset:0;z-index:-2;background-size:cover;background-position:center;transition:transform 1.4s var(--ease),filter .6s}
+.service-card::after{
+  content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(0deg,rgba(10,9,8,.96) 8%,rgba(10,9,8,.55) 50%,rgba(10,9,8,.2));
+  transition:background .5s;
+}
+.service-card:hover .bg{transform:scale(1.06)}
+.service-card:hover,.service-card.active{border-color:var(--gold)}
+.service-card.dim .bg{filter:grayscale(.7) brightness(.6)}
+.service-card .kanji{
+  position:absolute;top:clamp(22px,3vw,36px);right:clamp(22px,3vw,36px);
+  writing-mode:vertical-rl;font-family:var(--jp);font-size:20px;letter-spacing:.4em;color:var(--gold-light);opacity:.85;
+}
+.service-card h3{font-family:var(--display);font-weight:500;font-size:clamp(30px,3.4vw,42px);letter-spacing:.1em;text-transform:uppercase;line-height:1.1}
+.service-card p{color:#cfc6b6;margin:10px 0 22px;font-size:15px;letter-spacing:.06em}
+.service-card .more{
+  display:inline-flex;align-items:center;gap:12px;
+  font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold-light);
+}
+.service-card .more i{
+  display:grid;place-items:center;width:34px;height:34px;border:1px solid var(--gold);border-radius:50%;
+  font-style:normal;transition:transform .4s var(--ease),background .3s;
+}
+.service-card.active .more i{transform:rotate(90deg);background:var(--gold);color:var(--bg)}
+.select-hint{text-align:center;color:var(--muted);font-size:13px;letter-spacing:.2em;text-transform:uppercase;margin-top:34px;transition:opacity .4s}
+.select-hint.hide{opacity:0;height:0;margin:0;overflow:hidden}
+
+.panel{display:none;margin-top:22px;border:1px solid var(--line);background:var(--bg);scroll-margin-top:90px}
+.panel.open{display:block;animation:panelIn .7s var(--ease)}
+@keyframes panelIn{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.panel-inner{padding:clamp(26px,5vw,60px)}
+.panel-top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:36px}
+.panel-top h3{font-family:var(--serif);font-weight:500;font-size:clamp(28px,3.4vw,40px);line-height:1.15}
+.panel-top p{color:var(--muted);margin-top:6px;max-width:520px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{
+  display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border:1px solid var(--line-strong);
+  font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-light);
+}
+
+/* Opções de menu */
+.option-tabs{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);margin-bottom:34px}
+.option-tab{padding:18px 16px;text-align:center;position:relative;transition:background .4s;border-right:1px solid var(--line)}
+.option-tab:last-child{border-right:0}
+.option-tab::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--gold-grad);transform:scaleX(0);transition:transform .5s var(--ease)}
+.option-tab.active{background:rgba(201,163,92,.07)}
+.option-tab.active::after{transform:scaleX(1)}
+.option-tab strong{display:block;font-family:var(--display);font-weight:500;font-size:16px;letter-spacing:.2em;text-transform:uppercase}
+.option-tab span{display:block;font-size:13px;color:var(--muted);margin-top:2px}
+.option-tab.active span{color:var(--gold-light)}
+
+.menu{display:grid;grid-template-columns:5fr 7fr;gap:clamp(28px,4vw,56px);align-items:start}
+.menu.swap{animation:swap .55s var(--ease)}
+@keyframes swap{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.menu-photo{position:relative;overflow:hidden;border:1px solid var(--line)}
+.menu-photo img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.menu-photo .num{
+  position:absolute;top:18px;left:18px;width:62px;height:62px;display:grid;place-items:center;
+  background:rgba(10,9,8,.75);border:1px solid var(--gold);font-family:var(--jp);font-size:26px;color:var(--gold-light);
+  backdrop-filter:blur(4px);
+}
+.fish{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:30px}
+.fish .chip{transition:all .4s}
+.fish .chip.off{color:#5c564c;border-color:rgba(255,255,255,.08);text-decoration:line-through;text-decoration-color:rgba(255,255,255,.15)}
+.fish .chip::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--gold)}
+.fish .chip.off::before{background:#3a362f}
+.course{padding:22px 0;border-top:1px solid var(--line)}
+.course:first-of-type{border-top:0;padding-top:0}
+.course h4{
+  display:flex;align-items:center;gap:12px;margin-bottom:12px;
+  font-family:var(--display);font-weight:500;font-size:13px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);
+}
+.course h4 .jp{font-size:13px;letter-spacing:.1em;color:var(--muted);font-weight:400}
+.dish{margin-bottom:10px}
+.dish:last-child{margin-bottom:0}
+.dish b{font-family:var(--serif);font-weight:500;font-size:22px;color:var(--text);line-height:1.3}
+.dish small{display:block;color:var(--muted);font-size:14px;line-height:1.55}
+.pieces{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.pieces span{font-size:12px;letter-spacing:.08em;color:#cfc6b6;padding:5px 11px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06)}
+.extras{
+  display:flex;align-items:center;gap:18px;margin-top:34px;padding:20px 24px;
+  border:1px dashed var(--line-strong);background:rgba(201,163,92,.04);
+}
+.extras .jp{font-size:22px;color:var(--gold-light);flex:none}
+.extras p{font-size:15px;color:var(--muted)}
+.extras p b{color:var(--text);font-weight:400}
+.panel-cta{display:flex;justify-content:center;margin-top:40px}
+
+/* Omakase */
+.omakase{display:grid;grid-template-columns:6fr 5fr;gap:clamp(30px,5vw,70px);align-items:center}
+.omakase-word{display:flex;align-items:baseline;gap:18px;flex-wrap:wrap;margin-bottom:8px}
+.omakase-word .jp{font-size:clamp(34px,4vw,48px);line-height:1.1}
+.omakase-word em{font-family:var(--serif);font-size:clamp(22px,2.2vw,26px);color:var(--muted)}
+.omakase-intro{color:var(--muted);margin:14px 0 30px;max-width:520px}
+.omakase-intro strong{color:var(--text);font-weight:400}
+.steps{display:grid;gap:4px}
+.step{display:grid;grid-template-columns:58px 1fr;gap:18px;padding:18px 0;border-top:1px solid var(--line)}
+.step .jp{
+  width:50px;height:50px;display:grid;place-items:center;border:1px solid var(--line-strong);border-radius:50%;
+  font-size:20px;color:var(--gold-light);
+}
+.step h4{font-family:var(--serif);font-weight:500;font-size:23px;line-height:1.3}
+.step p{color:var(--muted);font-size:15px}
+.ideal{margin-top:24px;display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.ideal > span{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-right:4px}
+.omakase-photos{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:12px}
+.omakase-photos img{width:100%;height:100%;object-fit:cover;border:1px solid var(--line)}
+.omakase-photos .tall{grid-row:span 2;aspect-ratio:9/16}
+.omakase-photos .sq{aspect-ratio:1}
+
+/* ---------- Galeria ---------- */
+.filters{display:flex;justify-content:center;gap:8px;margin-bottom:40px}
+.filter{
+  padding:11px 24px;border:1px solid var(--line);
+  font-size:12px;letter-spacing:.26em;text-transform:uppercase;color:var(--muted);transition:all .35s;
+}
+.filter:hover{color:var(--text);border-color:var(--line-strong)}
+.filter.active{color:var(--bg);background:var(--gold-grad);border-color:var(--gold)}
+.gallery{columns:3 300px;column-gap:14px}
+.g-item{
+  break-inside:avoid;margin-bottom:14px;position:relative;overflow:hidden;cursor:zoom-in;
+  border:1px solid transparent;transition:border-color .4s;display:block;width:100%;
+  animation:gIn .7s var(--ease) both;
+}
+@keyframes gIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.g-item img{width:100%;height:auto;transition:transform 1.1s var(--ease),filter .5s}
+.g-item::after{
+  content:"+";position:absolute;inset:0;display:grid;place-items:center;
+  font-family:var(--serif);font-size:44px;font-weight:300;color:var(--gold-light);
+  background:rgba(10,9,8,.35);opacity:0;transition:opacity .4s;
+}
+.g-item:hover{border-color:var(--gold)}
+.g-item:hover img{transform:scale(1.05)}
+.g-item:hover::after{opacity:1}
+
+/* ---------- Formação ---------- */
+.formation{background:var(--bg-2)}
+.timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;position:relative}
+.timeline::before{content:"";position:absolute;left:0;right:0;top:27px;height:1px;background:linear-gradient(90deg,transparent,var(--line-strong) 10%,var(--line-strong) 90%,transparent)}
+.cert{position:relative;text-align:center}
+.cert-year{
+  display:inline-block;position:relative;padding:14px 18px;background:var(--bg-2);
+  font-family:var(--display);font-size:20px;letter-spacing:.14em;
+}
+.cert-year::after{content:"";position:absolute;left:50%;bottom:-6px;width:9px;height:9px;transform:translateX(-50%) rotate(45deg);background:var(--gold)}
+.cert-thumb{
+  display:block;width:100%;margin:26px 0 20px;padding:10px;border:1px solid var(--line);background:var(--bg);
+  cursor:zoom-in;transition:border-color .4s,transform .5s var(--ease);
+}
+.cert-thumb:hover{border-color:var(--gold);transform:translateY(-4px)}
+.cert-thumb img{width:100%;aspect-ratio:4/3;object-fit:cover;object-position:center 30%}
+.cert h4{font-family:var(--serif);font-weight:500;font-size:23px;line-height:1.25}
+.cert p{color:var(--muted);font-size:14px;margin-top:4px}
+
+/* ---------- Contato ---------- */
+.contact{overflow:hidden;isolation:isolate}
+.contact .bg{position:absolute;inset:0;z-index:-2;background-size:cover;background-position:center;opacity:.16;filter:grayscale(.3)}
+.contact::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,var(--bg) 0%,rgba(10,9,8,.7) 40%,var(--bg) 100%)}
+.contact-grid{display:grid;grid-template-columns:5fr 6fr;gap:clamp(36px,6vw,90px);align-items:start}
+.contact-links{display:grid;gap:14px;margin-top:34px}
+.contact-link{
+  display:flex;align-items:center;gap:16px;padding:16px 20px;border:1px solid var(--line);
+  background:rgba(10,9,8,.6);transition:border-color .35s,transform .35s var(--ease);
+}
+.contact-link:hover{border-color:var(--gold);transform:translateX(4px)}
+.contact-link svg{width:22px;height:22px;color:var(--gold);flex:none}
+.contact-link small{display:block;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+.contact-link span{font-size:16px}
+.form{background:rgba(16,14,12,.92);border:1px solid var(--line);padding:clamp(26px,4vw,46px);display:grid;grid-template-columns:1fr 1fr;gap:18px 18px}
+.form h3{grid-column:1/-1;font-family:var(--serif);font-weight:500;font-size:28px;margin-bottom:4px}
+.field{display:flex;flex-direction:column;gap:7px}
+.field.full{grid-column:1/-1}
+.field label{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+.field input,.field select,.field textarea{
+  width:100%;background:transparent;border:0;border-bottom:1px solid var(--line-strong);
+  padding:10px 2px;font-size:16px;font-weight:300;outline:none;transition:border-color .3s;border-radius:0;
+  color-scheme:dark;
+}
+.field select{appearance:none;-webkit-appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--gold) 50%),linear-gradient(135deg,var(--gold) 50%,transparent 50%);background-position:calc(100% - 12px) 55%,calc(100% - 7px) 55%;background-size:5px 5px;background-repeat:no-repeat;padding-right:26px}
+.field select option{background:var(--bg-2);color:var(--text)}
+.field textarea{resize:vertical;min-height:84px}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--gold)}
+.field.hidden{display:none}
+.form .btn{grid-column:1/-1;margin-top:10px}
+.form-note{grid-column:1/-1;font-size:13px;color:var(--muted);text-align:center}
+
+/* ---------- Rodapé ---------- */
+.footer{position:relative;border-top:1px solid var(--line);padding:56px 0 120px;text-align:center;overflow:hidden}
+.footer::before{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:100px;z-index:-1;
+  background-image:var(--seigaiha);background-size:60px 30px;opacity:.4;
+  -webkit-mask-image:linear-gradient(0deg,#000,transparent);mask-image:linear-gradient(0deg,#000,transparent);
+}
+.footer{isolation:isolate}
+.footer .seal{width:64px;margin:0 auto 18px}
+.footer-name{font-family:var(--display);letter-spacing:.3em;text-transform:uppercase;font-size:15px}
+.footer-script{font-family:var(--serif);font-style:italic;color:var(--gold-light);font-size:20px;margin:6px 0 22px}
+.footer small{color:#6f685c;font-size:12px;letter-spacing:.14em}
+
+/* ---------- WhatsApp flutuante ---------- */
+.float-wa{
+  position:fixed;right:22px;bottom:22px;z-index:40;width:56px;height:56px;border-radius:50%;
+  display:grid;place-items:center;background:var(--gold-grad);color:var(--bg);
+  box-shadow:0 12px 30px -10px rgba(0,0,0,.8),0 0 0 6px rgba(201,163,92,.12);
+  transform:scale(0);transition:transform .5s var(--ease);
+}
+.float-wa.show{transform:scale(1)}
+.float-wa svg{width:26px;height:26px}
+
+/* ---------- Lightbox ---------- */
+.lightbox{
+  position:fixed;inset:0;z-index:100;background:rgba(6,5,4,.96);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;visibility:hidden;transition:opacity .4s,visibility .4s;
+}
+.lightbox.open{opacity:1;visibility:visible}
+.lightbox img{max-width:min(92vw,1300px);max-height:84vh;object-fit:contain;border:1px solid var(--line);transition:opacity .25s}
+.lightbox img.fade{opacity:0}
+.lb-btn{
+  position:absolute;width:52px;height:52px;display:grid;place-items:center;border:1px solid var(--line-strong);border-radius:50%;
+  color:var(--gold-light);font-size:20px;transition:background .3s,border-color .3s;background:rgba(10,9,8,.6);
+}
+.lb-btn:hover{background:rgba(201,163,92,.12);border-color:var(--gold)}
+.lb-close{top:22px;right:22px}
+.lb-prev{left:22px;top:50%;transform:translateY(-50%)}
+.lb-next{right:22px;top:50%;transform:translateY(-50%)}
+.lb-count{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);font-size:12px;letter-spacing:.3em;color:var(--muted)}
+
+/* ---------- Revelação ao rolar ---------- */
+.js .reveal{opacity:0;transform:translateY(28px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.js .reveal.in{opacity:1;transform:none}
+.js .reveal.d1{transition-delay:.12s}
+.js .reveal.d2{transition-delay:.24s}
+.js .reveal.d3{transition-delay:.36s}
+
+/* ---------- Responsivo ---------- */
+@media (max-width:1000px){
+  .about,.omakase,.contact-grid{grid-template-columns:1fr}
+  .about-photo{max-width:420px}
+  .timeline{grid-template-columns:1fr 1fr;row-gap:44px}
+  .timeline::before{display:none}
+  .menu{grid-template-columns:1fr}
+  .menu-photo img{aspect-ratio:16/10}
+  .omakase-photos{order:-1}
+}
+@media (max-width:860px){
+  .nav-toggle{display:block}
+  .nav-links{
+    position:fixed;inset:0;flex-direction:column;justify-content:center;gap:30px;
+    background:rgba(10,9,8,.97);backdrop-filter:blur(10px);
+    opacity:0;visibility:hidden;transition:opacity .4s,visibility .4s;
+  }
+  .nav.open .nav-links{opacity:1;visibility:visible}
+  .nav-links a{font-size:15px}
+  .hero{align-items:flex-end}
+  .hero-media{left:0;bottom:auto;height:62%;background-position:center}
+  .hero-shade{background:linear-gradient(0deg,var(--bg) 44%,rgba(10,9,8,.7) 60%,rgba(10,9,8,.05) 82%,rgba(10,9,8,.55) 100%)}
+  .hero-content{margin:0 auto;padding:0 24px 64px}
+  .hero .seal{width:84px;margin-bottom:18px}
+  .hero-title{filter:drop-shadow(0 2px 14px rgba(0,0,0,.7))}
+  .hero-script{margin:18px 0 26px}
+  .hero-vertical,.scroll-cue{display:none}
+  .pillars .wrap{grid-template-columns:1fr 1fr}
+  .pillar:nth-child(3)::before{display:none}
+  .pillar:nth-child(n+3){border-top:1px solid var(--line)}
+  .service-cards{grid-template-columns:1fr}
+  .service-card{min-height:340px}
+}
+@media (max-width:600px){
+  body{font-size:16px}
+  .wrap{width:min(var(--wrap),100% - 36px)}
+  .about-badge{left:-8px;bottom:20px;padding:14px 16px}
+  .about-badge strong{font-size:34px}
+  .about-photo::before{inset:14px -12px -14px 12px}
+  .stats{grid-template-columns:1fr 1fr 1fr;gap:10px}
+  .stat span{letter-spacing:.12em;font-size:10px}
+  .option-tab{padding:14px 6px}
+  .option-tab strong{font-size:13px;letter-spacing:.12em}
+  .option-tab span{font-size:11px;line-height:1.3}
+  .timeline{grid-template-columns:1fr 1fr;gap:34px 14px}
+  .cert-year{font-size:17px;padding:10px 12px}
+  .cert-thumb{margin:20px 0 14px;padding:6px}
+  .cert h4{font-size:19px}
+  .cert p{font-size:12px}
+  .form{grid-template-columns:1fr}
+  .gallery{columns:2 150px;column-gap:8px}
+  .g-item{margin-bottom:8px}
+  .lb-prev,.lb-next{top:auto;bottom:16px;transform:none}
+  .lb-count{bottom:34px}
+  .filters .filter{padding:10px 16px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="goldGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f3e2b3"/>
+      <stop offset=".45" stop-color="#c9a35c"/>
+      <stop offset="1" stop-color="#8f6d33"/>
+    </linearGradient>
+    <symbol id="seal" viewBox="0 0 120 120">
+      <g fill="none" stroke="url(#goldGrad)" stroke-linecap="round">
+        <circle cx="60" cy="60" r="53" stroke-width="3.2" stroke-dasharray="290 43" transform="rotate(-62 60 60)"/>
+        <circle cx="60" cy="60" r="48.5" stroke-width=".8" stroke-dasharray="250 55" transform="rotate(-40 60 60)" opacity=".6"/>
+      </g>
+      <text x="60" y="77" text-anchor="middle" font-size="50" font-weight="600" font-family="'Noto Serif JP','Hiragino Mincho ProN',serif" fill="url(#goldGrad)">鮨</text>
+    </symbol>
+    <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01Zm-7.01 15.24c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.26 8.26 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c.01 4.54-3.68 8.23-8.22 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29Z"/></symbol>
+    <symbol id="i-ig" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r=".6" fill="currentColor"/></g></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6 8.5 7 8.5-7"/></g></symbol>
+  </defs>
+</svg>
+
+<!-- Navegação -->
+<header class="nav" id="nav">
+  <a href="#inicio" class="nav-brand" aria-label="Início">
+    <svg class="seal"><use href="#seal"/></svg>
+    <span>William Recchia</span>
+  </a>
+  <nav class="nav-links" id="navLinks">
+    <a href="#chef">O Chef</a>
+    <a href="#servicos">Experiências</a>
+    <a href="#galeria">Galeria</a>
+    <a href="#formacao">Formação</a>
+    <a href="#contato" class="nav-cta">Reservar</a>
+  </nav>
+  <button class="nav-toggle" id="navToggle" aria-label="Abrir menu"><span></span><span></span></button>
+</header>
+
+<!-- Início -->
+<section class="hero" id="inicio">
+  <div class="hero-media" data-bg="21"></div>
+  <div class="hero-shade"></div>
+  <div class="hero-content">
+    <svg class="seal" viewBox="0 0 120 120"><use href="#seal"/></svg>
+    <h1 class="hero-title gold-text">William<br>Recchia</h1>
+    <div class="rule">Sushi Chef</div>
+    <p class="hero-tags">Sushi<b>·</b>Omakase<b>·</b>Eventos</p>
+    <p class="hero-script">Tradição japonesa, experiências únicas.</p>
+    <div class="hero-cta">
+      <a class="btn" href="#servicos">Conheça as experiências</a>
+      <a class="btn ghost" href="#contato">Solicitar orçamento</a>
+    </div>
+  </div>
+  <div class="hero-vertical" aria-hidden="true">寿司職人</div>
+  <a class="scroll-cue" href="#chef" aria-label="Rolar"><span></span></a>
+</section>
+
+<!-- Pilares -->
+<div class="pillars">
+  <div class="wrap">
+    <div class="pillar"><span class="jp gold-text">技</span><span>Técnica</span></div>
+    <div class="pillar"><span class="jp gold-text">質</span><span>Qualidade</span></div>
+    <div class="pillar"><span class="jp gold-text">創</span><span>Criatividade</span></div>
+    <div class="pillar"><span class="jp gold-text">心</span><span>Detalhe</span></div>
+  </div>
+</div>
+
+<!-- O Chef -->
+<section class="section" id="chef">
+  <div class="wrap about">
+    <div class="about-photo reveal">
+      <img data-img="51" alt="Chef William Recchia preparando sushi">
+      <div class="about-badge">
+        <strong class="gold-text">16</strong>
+        <small>anos de<br>experiência</small>
+      </div>
+    </div>
+    <div class="about-text">
+      <span class="eyebrow reveal">O Chef <span class="jp">料理人</span></span>
+      <h2 class="h2 reveal d1">A arte do sushi, <em>levada até você</em></h2>
+      <p class="reveal d1">William Recchia dedica <strong>16 anos</strong> à culinária japonesa. Formado em Cozinha Japonesa pelo <strong>SENAC</strong> e pela <strong>Ishizuka Academy</strong>, especializou-se em Sushi Avançado e Omakase.</p>
+      <p class="reveal d2">Certificado em Personal Chef pelo chef <strong>Allan Beckmann</strong>, vice-campeão mundial de sushi, cria menus exclusivos para cada ocasião.</p>
+      <blockquote class="quote reveal d2">“Mais do que servir sushi, transformar cada evento em uma experiência única.”</blockquote>
+      <div class="stats reveal d3">
+        <div class="stat"><strong class="gold-text">16</strong><span>Anos de cozinha</span></div>
+        <div class="stat"><strong class="gold-text">4</strong><span>Certificações</span></div>
+        <div class="stat"><strong class="gold-text">10–15</strong><span>Rodadas Omakase</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Experiências -->
+<section class="section services" id="servicos">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow reveal">Experiências</span>
+      <h2 class="h2 reveal d1">Escolha a sua <em>experiência</em></h2>
+      <p class="lead reveal d2">Menus elaborados especialmente para cada ocasião, com técnica, frescor e atenção a cada detalhe.</p>
+    </div>
+
+    <div class="service-cards" role="tablist">
+      <button class="service-card reveal" data-panel="eventos" role="tab" aria-selected="false" aria-controls="panel-eventos">
+        <div class="bg" data-bg="38"></div>
+        <span class="kanji" aria-hidden="true">宴席</span>
+        <h3>Eventos</h3>
+        <p>Corporativos · Casamentos · Aniversários</p>
+        <span class="more"><i>+</i>Ver menus</span>
+      </button>
+      <button class="service-card reveal d1" data-panel="omakase" role="tab" aria-selected="false" aria-controls="panel-omakase">
+        <div class="bg" data-bg="20"></div>
+        <span class="kanji" aria-hidden="true">お任せ</span>
+        <h3>Omakase</h3>
+        <p>Experiência privativa, guiada pelo chef</p>
+        <span class="more"><i>+</i>Ver experiência</span>
+      </button>
+    </div>
+    <p class="select-hint" id="selectHint">Selecione uma experiência para ver os detalhes</p>
+
+    <!-- Painel: Eventos -->
+    <div class="panel" id="panel-eventos" role="tabpanel">
+      <div class="panel-inner">
+        <div class="panel-top">
+          <div>
+            <span class="eyebrow">Eventos & Celebrações</span>
+            <h3>Entradas, principais e sobremesa</h3>
+            <p>Para eventos corporativos, casamentos e aniversários.</p>
+          </div>
+          <div class="chips">
+            <span class="chip">Montagem de mesa</span>
+            <span class="chip">Buffet</span>
+          </div>
+        </div>
+
+        <div class="option-tabs" id="optionTabs"></div>
+        <div class="menu" id="menu"></div>
+
+        <div class="extras">
+          <span class="jp">＋</span>
+          <p><b>Yakisoba, Teppan Yaki e Temaki</b> disponíveis em todas as opções.</p>
+        </div>
+        <div class="panel-cta">
+          <a class="btn" href="#contato" id="menuCta">Solicitar orçamento</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Painel: Omakase -->
+    <div class="panel" id="panel-omakase" role="tabpanel">
+      <div class="panel-inner omakase">
+        <div>
+          <span class="eyebrow">Omakase</span>
+          <div class="omakase-word">
+            <span class="jp gold-text">おまかせ</span>
+            <em>“deixo por sua conta”</em>
+          </div>
+          <p class="omakase-intro">Você não escolhe os pratos: <strong>a refeição fica inteiramente a cargo da criatividade do chef</strong>, em uma experiência íntima e exclusiva.</p>
+          <div class="steps">
+            <div class="step">
+              <span class="jp">一</span>
+              <div><h4>Ingredientes do dia</h4><p>Os peixes mais frescos e sazonais definem o menu.</p></div>
+            </div>
+            <div class="step">
+              <span class="jp">二</span>
+              <div><h4>10 a 15 rodadas</h4><p>Peças individuais de sushi e pequenos acompanhamentos, em sequência.</p></div>
+            </div>
+            <div class="step">
+              <span class="jp">三</span>
+              <div><h4>Frente a frente com o chef</h4><p>Servido no balcão: cada criação é explicada, com a ordem ideal de consumo.</p></div>
+            </div>
+          </div>
+          <div class="ideal">
+            <span>Ideal para</span>
+            <span class="chip">Encontros intimistas</span>
+            <span class="chip">Jantares privativos</span>
+          </div>
+          <div class="panel-cta" style="justify-content:flex-start">
+            <a class="btn" href="#contato" data-prefill="Omakase">Reservar um Omakase</a>
+          </div>
+        </div>
+        <div class="omakase-photos">
+          <img class="tall" data-img="01" alt="Chef William finalizando uma peça">
+          <img class="sq" data-img="32" alt="Niguiri com ovas">
+          <img class="sq" data-img="15" alt="Niguiris do chef">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Galeria -->
+<section class="section" id="galeria">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow reveal">Galeria</span>
+      <h2 class="h2 reveal d1">Criações & <em>Eventos</em></h2>
+    </div>
+    <div class="filters reveal d2" id="filters">
+      <button class="filter active" data-filter="criacoes">Criações</button>
+      <button class="filter" data-filter="eventos">Eventos</button>
+    </div>
+    <div class="gallery" id="gallery"></div>
+  </div>
+</section>
+
+<!-- Formação -->
+<section class="section formation" id="formacao">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow reveal">Formação</span>
+      <h2 class="h2 reveal d1">Aprendizado <em>contínuo</em></h2>
+      <p class="lead reveal d2">Toque nos certificados para ampliar.</p>
+    </div>
+    <div class="timeline" id="timeline"></div>
+  </div>
+</section>
+
+<!-- Contato -->
+<section class="section contact" id="contato">
+  <div class="bg" data-bg="35"></div>
+  <div class="wrap contact-grid">
+    <div>
+      <span class="eyebrow reveal">Contato</span>
+      <h2 class="h2 reveal d1">Vamos criar a sua <em>experiência</em></h2>
+      <p class="lead reveal d2">Conte um pouco sobre a ocasião e receba uma proposta personalizada.</p>
+      <div class="contact-links reveal d3">
+        <a class="contact-link" id="linkWa" target="_blank" rel="noopener">
+          <svg><use href="#i-wa"/></svg>
+          <div><small>WhatsApp</small><span id="txtWa"></span></div>
+        </a>
+        <a class="contact-link" id="linkIg" target="_blank" rel="noopener">
+          <svg><use href="#i-ig"/></svg>
+          <div><small>Instagram</small><span id="txtIg"></span></div>
+        </a>
+        <a class="contact-link" id="linkMail">
+          <svg><use href="#i-mail"/></svg>
+          <div><small>E-mail</small><span id="txtMail"></span></div>
+        </a>
+      </div>
+    </div>
+
+    <form class="form reveal d1" id="form" novalidate>
+      <h3>Solicite seu orçamento</h3>
+      <div class="field full">
+        <label for="fName">Nome</label>
+        <input id="fName" name="nome" required autocomplete="name">
+      </div>
+      <div class="field">
+        <label for="fType">Experiência</label>
+        <select id="fType" name="tipo">
+          <option>Evento corporativo</option>
+          <option>Casamento</option>
+          <option>Aniversário</option>
+          <option>Omakase</option>
+          <option>Outro</option>
+        </select>
+      </div>
+      <div class="field" id="fMenuWrap">
+        <label for="fMenu">Menu</label>
+        <select id="fMenu" name="menu">
+          <option>Opção 1</option>
+          <option>Opção 2</option>
+          <option>Opção 3</option>
+          <option>Ainda não sei</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="fDate">Data</label>
+        <input id="fDate" name="data" type="date">
+      </div>
+      <div class="field">
+        <label for="fGuests">Convidados</label>
+        <input id="fGuests" name="convidados" type="number" min="1" inputmode="numeric" placeholder="Ex.: 40">
+      </div>
+      <div class="field full">
+        <label for="fMsg">Mensagem</label>
+        <textarea id="fMsg" name="mensagem" placeholder="Local, horário, restrições alimentares…"></textarea>
+      </div>
+      <button class="btn" type="submit"><svg><use href="#i-wa"/></svg>Enviar pelo WhatsApp</button>
+      <p class="form-note">Você será direcionado ao WhatsApp com a mensagem pronta.</p>
+    </form>
+  </div>
+</section>
+
+<footer class="footer">
+  <svg class="seal" viewBox="0 0 120 120"><use href="#seal"/></svg>
+  <div class="footer-name gold-text">William Recchia</div>
+  <div class="footer-script">Tradição japonesa, experiências únicas.</div>
+  <small>© <span id="year"></span> William Recchia · Sushi Chef</small>
+</footer>
+
+<a class="float-wa" id="floatWa" target="_blank" rel="noopener" aria-label="Conversar no WhatsApp"><svg><use href="#i-wa"/></svg></a>
+
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="lb-btn lb-close" id="lbClose" aria-label="Fechar">✕</button>
+  <button class="lb-btn lb-prev" id="lbPrev" aria-label="Anterior">‹</button>
+  <img id="lbImg" alt="">
+  <button class="lb-btn lb-next" id="lbNext" aria-label="Próxima">›</button>
+  <div class="lb-count" id="lbCount"></div>
+</div>
+
+<script>const IMAGES = {};</script>
+<script>
+// WhatsApp: DDI + DDD + número, só dígitos
+const CONFIG = {
+  whatsapp: '5512981120189',
+  instagram: 'william_sushicheff',
+  email: 'wrthomaz@gmail.com'
+};
+
+const FISH = ['Peixe branco', 'Salmão', 'Atum', 'Camarão', 'Polvo'];
+const PIECES = ['Hossomaki', 'Uramaki', 'Niguiri', 'Joy', 'Sashimi', 'Carpaccio trufado', 'Hotroll'];
+const SUNOMONO = ['Sunomono do Chef', 'Salada agridoce de pepino com kani kama, cenoura e gergelim'];
+
+const MENUS = [
+  {
+    tab: 'Peixe Branco & Salmão', num: '壱', img: '36', fish: 2,
+    entradas: [
+      SUNOMONO,
+      ['Ceviche especial', 'Peixe branco marinado, cebola roxa, tomate cereja, manga, avocado, dedo-de-moça, cebolinha e gergelim']
+    ],
+    principais: 'Combinados variados de peixe branco e salmão',
+    sobremesa: ['Hotroll de banana', 'Com canela']
+  },
+  {
+    tab: '+ Atum', num: '弐', img: '19', fish: 3,
+    entradas: [
+      SUNOMONO,
+      ['Ceviche especial', 'Com mix dos três peixes'],
+      ['Shimeji na manteiga', '']
+    ],
+    principais: 'Combinados variados de peixe branco, salmão e atum',
+    sobremesa: ['Hotroll de banana', 'Com leite condensado e canela']
+  },
+  {
+    tab: '+ Camarão & Polvo', num: '参', img: '12', fish: 5,
+    entradas: [
+      SUNOMONO,
+      ['Ceviche especial', 'Mix de peixes e frutos do mar: camarão e polvo'],
+      ['Shimeji na manteiga', '']
+    ],
+    principais: 'Combinados variados de peixe branco, salmão, atum, camarão e polvo',
+    sobremesa: ['Hotroll de castanhas', 'Com chocolate e morango']
+  }
+];
+
+const GALLERY = {
+  criacoes: ['21', '30', '22', '36', '14', '18', '24', '29', '10', '11', '25', '33', '26', '12', '32'],
+  eventos: ['38', '34', '39', '02', '37', '35', '40', '46', '45', '04']
+};
+
+const CERTS = [
+  { year: '2017', img: '49', title: 'Cozinha Japonesa', by: 'SENAC' },
+  { year: '2018', img: '48', title: 'Sushi & Sashimi', by: 'Ishizuka Academy' },
+  { year: '2026', img: '47', title: 'Sushi Omakase Style', by: 'Ishizuka Academy' },
+  { year: '2026', img: '50', title: 'Personal Chef & Eventos', by: 'Chef Allan Beckmann, vice-campeão mundial de sushi' }
+];
+
+const $ = (s, c = document) => c.querySelector(s);
+const $$ = (s, c = document) => [...c.querySelectorAll(s)];
+const imgSrc = k => IMAGES[k] || `img/${k}.jpg`;
+
+document.documentElement.classList.add('js');
+
+function hydrate(root = document) {
+  $$('[data-img]', root).forEach(el => {
+    if (el.src) return;
+    el.decoding = 'async';
+    el.loading = 'lazy';
+    el.src = imgSrc(el.dataset.img);
+  });
+  $$('[data-bg]', root).forEach(el => {
+    el.style.backgroundImage = `url("${imgSrc(el.dataset.bg)}")`;
+  });
+}
+
+/* Padrão seigaiha (ondas) para o rodapé */
+(function seigaiha() {
+  const w = 60, h = 30, r = 30;
+  const scale = (x, y) => [r, r * .72, r * .46, r * .2]
+    .map((rr, i) => `<circle cx='${x}' cy='${y}' r='${rr}' fill='${i ? 'none' : '%230a0908'}' stroke='%23c9a35c' stroke-width='1'/>`).join('');
+  const centers = [[w / 2, -h / 2], [0, 0], [w, 0], [w / 2, h / 2], [0, h], [w, h], [w / 2, h * 1.5]];
+  const svg = `<svg xmlns='http://www.w3.org/2000/svg' width='${w}' height='${h}'>${centers.map(c => scale(...c)).join('')}</svg>`;
+  document.documentElement.style.setProperty('--seigaiha', `url("data:image/svg+xml,${svg.replace(/</g, '%3C').replace(/>/g, '%3E')}")`);
+})();
+
+/* Navegação */
+const nav = $('#nav');
+const floatWa = $('#floatWa');
+function onScroll() {
+  const y = window.scrollY;
+  nav.classList.toggle('scrolled', y > 40);
+  floatWa.classList.toggle('show', y > window.innerHeight * .8);
+}
+window.addEventListener('scroll', onScroll, { passive: true });
+onScroll();
+
+$('#navToggle').addEventListener('click', () => {
+  const open = nav.classList.toggle('open');
+  document.body.classList.toggle('locked', open);
+});
+$$('#navLinks a').forEach(a => a.addEventListener('click', () => {
+  nav.classList.remove('open');
+  document.body.classList.remove('locked');
+}));
+
+const spy = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    $$('#navLinks a').forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
+  });
+}, { rootMargin: '-45% 0px -50% 0px' });
+['chef', 'servicos', 'galeria', 'formacao', 'contato'].forEach(id => spy.observe(document.getElementById(id)));
+
+/* Revelação ao rolar */
+const revealer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); revealer.unobserve(e.target); }
+  });
+}, { threshold: .15, rootMargin: '0px 0px -40px 0px' });
+$$('.reveal').forEach(el => revealer.observe(el));
+
+/* Experiências */
+const cards = $$('.service-card');
+function openPanel(name, scroll = true) {
+  const current = $('.service-card.active');
+  const closing = current && current.dataset.panel === name;
+  cards.forEach(c => {
+    const on = !closing && c.dataset.panel === name;
+    c.classList.toggle('active', on);
+    c.classList.toggle('dim', !closing && !on);
+    c.setAttribute('aria-selected', on);
+  });
+  $$('.panel').forEach(p => p.classList.toggle('open', !closing && p.id === 'panel-' + name));
+  $('#selectHint').classList.toggle('hide', !closing);
+  if (!closing && scroll) {
+    requestAnimationFrame(() => $('#panel-' + name).scrollIntoView({ behavior: 'smooth', block: 'start' }));
+  }
+}
+cards.forEach(c => c.addEventListener('click', () => openPanel(c.dataset.panel)));
+
+/* Menus de eventos */
+let currentMenu = 0;
+$('#optionTabs').innerHTML = MENUS.map((m, i) =>
+  `<button class="option-tab${i ? '' : ' active'}" data-i="${i}"><strong>Opção ${i + 1}</strong><span>${m.tab}</span></button>`
+).join('');
+
+function renderMenu(i) {
+  const m = MENUS[i];
+  const dish = ([name, desc]) => `<div class="dish"><b>${name}</b>${desc ? `<small>${desc}</small>` : ''}</div>`;
+  const menu = $('#menu');
+  menu.innerHTML = `
+    <div class="menu-photo">
+      <img data-img="${m.img}" alt="Opção ${i + 1}">
+      <span class="num">${m.num}</span>
+    </div>
+    <div>
+      <div class="fish">${FISH.map((f, k) => `<span class="chip${k < m.fish ? '' : ' off'}">${f}</span>`).join('')}</div>
+      <div class="course">
+        <h4>Entradas <span class="jp">前菜</span></h4>
+        ${m.entradas.map(dish).join('')}
+      </div>
+      <div class="course">
+        <h4>Principais <span class="jp">主菜</span></h4>
+        ${dish([m.principais, ''])}
+        <div class="pieces">${PIECES.map(p => `<span>${p}</span>`).join('')}</div>
+      </div>
+      <div class="course">
+        <h4>Sobremesa <span class="jp">甘味</span></h4>
+        ${dish(m.sobremesa)}
+      </div>
+    </div>`;
+  hydrate(menu);
+  menu.classList.remove('swap');
+  void menu.offsetWidth;
+  menu.classList.add('swap');
+  $$('.option-tab').forEach((t, k) => t.classList.toggle('active', k === i));
+  currentMenu = i;
+}
+$('#optionTabs').addEventListener('click', e => {
+  const t = e.target.closest('.option-tab');
+  if (t) renderMenu(+t.dataset.i);
+});
+renderMenu(0);
+
+/* Galeria */
+let galleryKey = 'criacoes';
+function renderGallery(key) {
+  galleryKey = key;
+  const g = $('#gallery');
+  g.innerHTML = GALLERY[key].map((k, i) =>
+    `<button class="g-item" data-i="${i}" style="animation-delay:${i * 45}ms"><img data-img="${k}" alt="${key === 'eventos' ? 'Evento' : 'Criação'} do chef William Recchia"></button>`
+  ).join('');
+  hydrate(g);
+  $$('.filter').forEach(f => f.classList.toggle('active', f.dataset.filter === key));
+}
+$('#filters').addEventListener('click', e => {
+  const f = e.target.closest('.filter');
+  if (f && f.dataset.filter !== galleryKey) renderGallery(f.dataset.filter);
+});
+$('#gallery').addEventListener('click', e => {
+  const it = e.target.closest('.g-item');
+  if (it) openLightbox(GALLERY[galleryKey], +it.dataset.i);
+});
+renderGallery('criacoes');
+
+/* Formação */
+$('#timeline').innerHTML = CERTS.map((c, i) => `
+  <div class="cert reveal${i ? ' d' + Math.min(i, 3) : ''}">
+    <span class="cert-year"><span class="gold-text">${c.year}</span></span>
+    <button class="cert-thumb" data-i="${i}" aria-label="Ampliar certificado ${c.title}"><img data-img="${c.img}" alt="Certificado ${c.title}"></button>
+    <h4>${c.title}</h4>
+    <p>${c.by}</p>
+  </div>`).join('');
+$$('#timeline .reveal').forEach(el => revealer.observe(el));
+$('#timeline').addEventListener('click', e => {
+  const b = e.target.closest('.cert-thumb');
+  if (b) openLightbox(CERTS.map(c => c.img), +b.dataset.i);
+});
+
+/* Lightbox */
+const lb = $('#lightbox'), lbImg = $('#lbImg');
+let lbList = [], lbIndex = 0;
+function showLb(i) {
+  lbIndex = (i + lbList.length) % lbList.length;
+  lbImg.classList.add('fade');
+  setTimeout(() => {
+    lbImg.src = imgSrc(lbList[lbIndex]);
+    lbImg.classList.remove('fade');
+  }, lb.classList.contains('open') ? 180 : 0);
+  $('#lbCount').textContent = `${lbIndex + 1} / ${lbList.length}`;
+  const multi = lbList.length > 1;
+  $('#lbPrev').style.display = $('#lbNext').style.display = multi ? '' : 'none';
+}
+function openLightbox(list, i) {
+  lbList = list;
+  showLb(i);
+  lb.classList.add('open');
+  lb.setAttribute('aria-hidden', 'false');
+  document.body.classList.add('locked');
+}
+function closeLightbox() {
+  lb.classList.remove('open');
+  lb.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('locked');
+}
+$('#lbClose').addEventListener('click', closeLightbox);
+$('#lbPrev').addEventListener('click', () => showLb(lbIndex - 1));
+$('#lbNext').addEventListener('click', () => showLb(lbIndex + 1));
+lb.addEventListener('click', e => { if (e.target === lb) closeLightbox(); });
+document.addEventListener('keydown', e => {
+  if (!lb.classList.contains('open')) return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowLeft') showLb(lbIndex - 1);
+  if (e.key === 'ArrowRight') showLb(lbIndex + 1);
+});
+let touchX = null;
+lb.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; }, { passive: true });
+lb.addEventListener('touchend', e => {
+  if (touchX === null) return;
+  const dx = e.changedTouches[0].clientX - touchX;
+  if (Math.abs(dx) > 50) showLb(lbIndex + (dx < 0 ? 1 : -1));
+  touchX = null;
+});
+
+/* Contato */
+const waBase = `https://wa.me/${CONFIG.whatsapp}`;
+const waHello = `${waBase}?text=${encodeURIComponent('Olá, William! Gostaria de saber mais sobre suas experiências.')}`;
+const fmtPhone = n => {
+  const m = n.match(/^55(\d{2})(\d{4,5})(\d{4})$/);
+  return m ? `(${m[1]}) ${m[2]}-${m[3]}` : '+' + n;
+};
+$('#linkWa').href = waHello;
+$('#txtWa').textContent = fmtPhone(CONFIG.whatsapp);
+$('#linkIg').href = `https://instagram.com/${CONFIG.instagram}`;
+$('#txtIg').textContent = '@' + CONFIG.instagram;
+$('#linkMail').href = `mailto:${CONFIG.email}`;
+$('#txtMail').textContent = CONFIG.email;
+floatWa.href = waHello;
+
+const fType = $('#fType'), fMenu = $('#fMenu'), fMenuWrap = $('#fMenuWrap');
+function syncMenuField() {
+  const hide = fType.value === 'Omakase' || fType.value === 'Outro';
+  fMenuWrap.classList.toggle('hidden', hide);
+}
+fType.addEventListener('change', syncMenuField);
+syncMenuField();
+
+$('#menuCta').addEventListener('click', () => {
+  if (fType.value === 'Omakase' || fType.value === 'Outro') fType.value = 'Evento corporativo';
+  fMenu.selectedIndex = currentMenu;
+  syncMenuField();
+});
+$$('[data-prefill]').forEach(a => a.addEventListener('click', () => {
+  fType.value = a.dataset.prefill;
+  syncMenuField();
+}));
+
+$('#form').addEventListener('submit', e => {
+  e.preventDefault();
+  const name = $('#fName');
+  if (!name.value.trim()) {
+    name.focus();
+    name.style.borderColor = '#d0806a';
+    return;
+  }
+  name.style.borderColor = '';
+  const date = $('#fDate').value;
+  const guests = $('#fGuests').value;
+  const msg = $('#fMsg').value.trim();
+  const lines = [
+    'Olá, William! Gostaria de um orçamento.',
+    '',
+    `*Nome:* ${name.value.trim()}`,
+    `*Experiência:* ${fType.value}`
+  ];
+  if (!fMenuWrap.classList.contains('hidden')) lines.push(`*Menu:* ${fMenu.value}`);
+  if (date) lines.push(`*Data:* ${date.split('-').reverse().join('/')}`);
+  if (guests) lines.push(`*Convidados:* ${guests}`);
+  if (msg) lines.push(`*Mensagem:* ${msg}`);
+  window.open(`${waBase}?text=${encodeURIComponent(lines.join('\n'))}`, '_blank', 'noopener');
+});
+
+$('#year').textContent = new Date().getFullYear();
+
+hydrate();
+window.addEventListener('load', () => document.body.classList.add('loaded'));
+setTimeout(() => document.body.classList.add('loaded'), 1200);
+</script>
+</body>
+</html>
