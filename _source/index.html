@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>William Recchia · Sushi Chef</title>
-<meta name="description" content="William Recchia, Sushi Chef com 16 anos de experiência em culinária japonesa. Eventos, casamentos, aniversários e experiências Omakase privativas.">
+<meta name="description" content="William Recchia, Sushi Chef em São Sebastião, SP, com 16 anos de experiência em culinária japonesa. Eventos, casamentos, aniversários e experiências Omakase privativas.">
 <meta name="theme-color" content="#0a0908">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a0908'/%3E%3Ccircle cx='32' cy='32' r='22' fill='none' stroke='%23c9a35c' stroke-width='3' stroke-dasharray='118 20'/%3E%3Ctext x='32' y='41' text-anchor='middle' font-family='serif' font-size='24' fill='%23e6cb8e'%3EW%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -170,6 +170,12 @@ button{cursor:pointer;background:none;border:0}
 .rule::after{transform:scaleX(-1)}
 .hero-tags{font-size:12px;letter-spacing:.34em;text-transform:uppercase;color:var(--muted)}
 .hero-tags b{color:var(--gold);font-weight:400;margin:0 8px}
+.hero-location{
+  display:flex;align-items:center;justify-content:center;gap:8px;margin-top:14px;
+  font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-light);
+}
+.hero-location svg{width:16px;height:16px;color:var(--gold)}
+.hero-location b{color:var(--gold);font-weight:400}
 .hero-script{font-family:var(--serif);font-style:italic;font-size:clamp(22px,2.4vw,28px);color:var(--gold-light);margin:26px 0 34px}
 .hero-cta{display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
 .hero-vertical{
@@ -421,6 +427,8 @@ button{cursor:pointer;background:none;border:0}
 .footer-name{font-family:var(--display);letter-spacing:.3em;text-transform:uppercase;font-size:15px}
 .footer-script{font-family:var(--serif);font-style:italic;color:var(--gold-light);font-size:20px;margin:6px 0 22px}
 .footer small{color:#6f685c;font-size:12px;letter-spacing:.14em}
+.footer-location{display:flex;align-items:center;justify-content:center;gap:8px;margin:-8px 0 18px;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+.footer-location svg{width:15px;height:15px;color:var(--gold)}
 
 /* ---------- WhatsApp flutuante ---------- */
 .float-wa{
@@ -539,6 +547,7 @@ button{cursor:pointer;background:none;border:0}
     </symbol>
     <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01Zm-7.01 15.24c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.26 8.26 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c.01 4.54-3.68 8.23-8.22 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29Z"/></symbol>
     <symbol id="i-ig" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r=".6" fill="currentColor"/></g></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11Z"/><circle cx="12" cy="10" r="2.4"/></g></symbol>
     <symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6 8.5 7 8.5-7"/></g></symbol>
   </defs>
 </svg>
@@ -568,6 +577,7 @@ button{cursor:pointer;background:none;border:0}
     <h1 class="hero-title gold-text">William<br>Recchia</h1>
     <div class="rule">Sushi Chef</div>
     <p class="hero-tags">Sushi<b>·</b>Omakase<b>·</b>Eventos</p>
+    <p class="hero-location"><svg><use href="#i-pin"/></svg>São Sebastião <b>·</b> SP</p>
     <p class="hero-script">Tradição japonesa, experiências únicas.</p>
     <div class="hero-cta">
       <a class="btn" href="#servicos">Conheça as experiências</a>
@@ -716,11 +726,11 @@ button{cursor:pointer;background:none;border:0}
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow reveal">Galeria</span>
-      <h2 class="h2 reveal d1">Criações & <em>Eventos</em></h2>
+      <h2 class="h2 reveal d1">Eventos & <em>Criações</em></h2>
     </div>
     <div class="filters reveal d2" id="filters">
-      <button class="filter active" data-filter="criacoes">Criações</button>
-      <button class="filter" data-filter="eventos">Eventos</button>
+      <button class="filter active" data-filter="eventos">Eventos</button>
+      <button class="filter" data-filter="criacoes">Criações</button>
     </div>
     <div class="gallery" id="gallery"></div>
   </div>
@@ -758,6 +768,10 @@ button{cursor:pointer;background:none;border:0}
         <a class="contact-link" id="linkMail">
           <svg><use href="#i-mail"/></svg>
           <div><small>E-mail</small><span id="txtMail"></span></div>
+        </a>
+        <a class="contact-link" href="https://www.google.com/maps/search/?api=1&query=S%C3%A3o%20Sebasti%C3%A3o%2C%20SP" target="_blank" rel="noopener">
+          <svg><use href="#i-pin"/></svg>
+          <div><small>Localização</small><span>São Sebastião, SP</span></div>
         </a>
       </div>
     </div>
@@ -809,6 +823,7 @@ button{cursor:pointer;background:none;border:0}
   <svg class="seal" viewBox="0 0 120 120"><use href="#seal"/></svg>
   <div class="footer-name gold-text">William Recchia</div>
   <div class="footer-script">Tradição japonesa, experiências únicas.</div>
+  <p class="footer-location"><svg><use href="#i-pin"/></svg>São Sebastião, SP</p>
   <small>© <span id="year"></span> William Recchia · Sushi Chef</small>
 </footer>
 
@@ -1007,7 +1022,7 @@ $('#optionTabs').addEventListener('click', e => {
 renderMenu(0);
 
 /* Galeria */
-let galleryKey = 'criacoes';
+let galleryKey = 'eventos';
 function renderGallery(key) {
   galleryKey = key;
   const g = $('#gallery');
@@ -1025,7 +1040,7 @@ $('#gallery').addEventListener('click', e => {
   const it = e.target.closest('.g-item');
   if (it) openLightbox(GALLERY[galleryKey], +it.dataset.i);
 });
-renderGallery('criacoes');
+renderGallery('eventos');
 
 /* Formação */
 $('#timeline').innerHTML = CERTS.map((c, i) => `
